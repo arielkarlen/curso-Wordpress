@@ -1,0 +1,123 @@
+/*-------------------------------------------------------------*/
+/*FOOTER*/
+/*-------------------------------------------------------------*/
+
+footer{
+
+  .llamada-accion{
+    padding: 5.375rem 0;
+    background: lighten(@azul-oscuro, 50%);
+
+    .contenedor{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      .texto{
+        margin-right: 1.5625rem;
+
+        p{
+          color: @blanco;
+        }
+      }
+
+      .boton{
+        a{
+          background: @azul;
+          color: @blanco;
+          display: inline-block;
+          border: 1px solid @azul;
+          padding: .5rem 1.25rem;
+          transition: all .3s ease;
+
+          &:hover{
+            background: @blanco;
+            color: @azul;
+            border: 1px solid @blanco;
+          }
+        }
+      }
+    }
+  } /*Cierre de llamada-accion*/
+
+  .footer-widgets{
+    background: @azul-oscuro;
+    padding: 1.5rem 0;
+
+    .contenedor{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .contenedor-widget{
+        width: 33.33%;
+        padding: 2rem;
+
+        .widget{
+
+          color:@blanco;
+          font-size: .9rem;
+
+          .widget-title{
+            color: @blanco;
+            margin-bottom: 1.25rem;
+            font-size: 1.125rem;
+          }
+
+          a{
+            color:@blanco;
+            transition: all .3s ease;
+
+            &:hover{
+              color: @azul;
+            }
+          }
+
+          ul{
+            color: @blanco;
+            list-style-position: inside;
+
+            li{
+              margin-bottom: 0.625rem;
+            }
+          }
+
+          form{
+            input#s{
+              width: 75%;
+
+              +button[type="submit"]{
+                background: @azul;
+                color: @blanco;
+                width: 23%;
+
+                &:hover{
+                  background: @blanco;
+                  color: @azul;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  } /*Cierre de footer-widgets*/
+
+  .bottom-footer{
+    background: darken(@azul-oscuro, 5%);
+    border-top: 1px solid fade(@blanco, 20%);
+
+    .contenedor{
+      text-align: center;
+      padding: 2px 0;
+      color: white;
+
+      p{
+        font-size: .75rem;
+      }
+    }
+  }
+
+} /* Cierre de footer*/

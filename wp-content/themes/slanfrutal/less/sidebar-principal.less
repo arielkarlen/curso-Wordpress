@@ -1,0 +1,66 @@
+.main{
+
+  /*-------------------------------------------------------------*/
+  /*SIDEBAR*/
+  /*-------------------------------------------------------------*/
+
+  .sidebar-principal{
+    width: 28%;
+
+    .widget{
+      background: #fff;
+      padding: 3.375rem 2.5rem;
+      border: 1px solid rgba(220,220,220,.5);
+      margin-bottom: 1.25rem;
+
+      p, li{
+        color: lighten(@texto, 10%);
+      }
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+
+      .widget-title{
+        margin-bottom: 1.25rem;
+      }
+
+      ul{
+        list-style-position: inside;
+
+        li{
+          margin-bottom: .3rem;
+
+          a{
+            color: lighten(@texto, 10%);
+
+            &:hover{
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      form{
+        input#s{
+          width: 75%;
+
+          +button[type="submit"]{
+            background: @azul;
+            color: @blanco;
+            width: 23%;
+            padding-left: 0;
+            padding-right: 0;
+            float: right;
+
+            &:hover{
+              background: @blanco;
+              color: @azul;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

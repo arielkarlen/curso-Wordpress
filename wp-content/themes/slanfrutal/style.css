@@ -1,0 +1,11 @@
+/*
+Theme Name: Custom Theme
+Theme URI: https://possumus.tech
+Author: Ariel Karlen
+Author URI: https://possumus.tech
+Description: Tema de Wordpress para el curso HTML5
+Version: 1.0
+Text Domain: slan
+*/
+
+@import url('less/master.css');
