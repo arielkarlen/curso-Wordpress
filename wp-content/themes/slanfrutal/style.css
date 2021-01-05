@@ -9,3 +9,7 @@ Text Domain: slan
 */
 
 @import url('less/master.css');
+
+p {
+    font-size: 25px;
+}
