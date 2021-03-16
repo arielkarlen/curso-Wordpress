@@ -1,25 +1,35 @@
 <aside class="sidebar-principal">
 
-<div id="text-3" class="widget widget_text">
-            <h3 class="widget-title">Acerca de mí</h3>
-            <div class="textwidget">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum risus justo, id ornare nibh. Vivamus semper euismod ligula, ac faucibus augue feugiat mollis. Ut porttitor ante id turpis euismod ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
-                <p>Duis consectetur purus eget leo consectetur non blandit lorem posuere. Nunc sed velit leo. Suspendisse potenti.</p>
-            </div>
-        </div><!-- /.widget_text -->
+  <?php if ( is_single() ): ?>
+    <div class="widget article-header">
+      <p class="article-author"><i class="fa fa-user" aria-hidden="true"></i> <?php _e('Autor:', 'possumus')?> <?php the_author_posts_link();?></p>
+      <p class="article-date"><i class="fa fa-calendar" aria-hidden="true"></i> <?php the_time(get_option('date_format'));?></p>
+      
+      <p class="article-category"><i class="fa fa-list-ul" aria-hidden="true"></i> <?php the_category(', ');?></p>
+      <?php if(has_tag()):?>
+        <p class="article-tags"><i class="fa fa-tags" aria-hidden="true"></i> <?php the_tags('', ', ', '' ); ?></p>
+      <?php endif;?>
 
-        <div id="categories-3" class="widget widget_categories">
-            <h3 class="widget-title">Categorías</h3>
-            <ul>
-                <li><a href="">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="">Consectetur adipisicing elit</a></li>
-                <li><a href="">Incididunt ut labore</a></li>
-                <li><a href="">Ut enim ad minim veniam</a></li>
-                <li><a href="">Quis nostrud exercitation</a></li>
-                <li><a href="">Duis aute irure dolor</a></li>
-                <li><a href="">Reprehenderit</a></li>
-                <li><a href="">Voluptate velit</a></li>
-            </ul>
-        </div>
+      <?php if(comments_open() || get_comments_number() ):?>
+      <p class="article-comments-count">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <a href="<?php comments_link();?>">
+        <?php comments_number(__('Escribe el primer comentario', 'possumus'), __('Hay 1 comentario', 'possumus'), __('Hay % comentarios', 'possumus'));?></a>
+      </p>
+      <?php endif; ?>
+    </div><!-- /article-header -->
+  <?php endif; ?>
+
+  <?php if ( is_active_sidebar('main-sidebar') ) {
+
+    dynamic_sidebar('main-sidebar');
+
+  } else{ ?>
+
+    <div class="widget">
+      <?php get_search_form(); ?>
+    </div>
+
+  <?php } ?>
 
 </aside> <!-- /sidebar-principal -->

@@ -1,15 +1,13 @@
 /*
-Theme Name: Custom Theme
+Theme Name: Possumus
 Theme URI: https://possumus.tech
-Author: Ariel Karlen
+Author: Web Team
 Author URI: https://possumus.tech
-Description: Tema de Wordpress para el curso HTML5
+Description: Theme limpio desarrollado por Web Team de Possumus
 Version: 1.0
-Text Domain: slan
+Text Domain: possumus
 */
 
 @import url('less/master.css');
 
-p {
-    font-size: 25px;
-}
+

@@ -35,7 +35,7 @@
 
 if (is_single() && comments_open()) {
 
-  wp_enqueue_script ('comment-reply')
+  wp_enqueue_script ('comment-reply');
 }
 
 ?>
@@ -44,7 +44,50 @@ if (is_single() && comments_open()) {
     <?php wp_head(); ?>
   
   </head>
-  <body>
+  <body <?php body_class(); ?>>
+
+    <?php 
+    
+      $options = get_theme_mod('possumus_setings');
+      
+      if ( !empty($options['top_header_text'])) {
+        $top_header_text = $options['top_header_text'];
+      } 
+
+      if ( !empty($options['facebook_link'])) {
+        $facebook_link = $options['facebook_link'];
+      } 
+
+      if ( !empty($options['twitter_link'])) {
+        $twitter_link = $options['twitter_link'];
+      }
+
+      if ( !empty($options['instagram_link'])) {
+        $instagram_link = $options['instagram_link'];
+      }
+
+      if ( !empty($options['logo'])) {
+        $logo = $options['logo'];
+      }
+      else {
+        $logo = IMAGENES . '/logotipo.png';
+      }
+
+
+      if ( isset($options['show_page_title'])) {
+        $show_page_title = $options['show_page_title'];
+      }
+      else {
+        $show_page_title = false;
+      }
+      
+      
+      
+
+      
+    
+    ?>
+
 
     <!-- Header -->
     <header>
@@ -52,64 +95,95 @@ if (is_single() && comments_open()) {
       <div class="top-header">
 
         <div class="top-text">
-          <p>Preparando los mejores batidos</p>
+
+          <?php if (isset($top_header_text)): ?>
+          <p><?php echo $top_header_text; ?></p>
+          <?php endif;  ?>
+
         </div>
 
         <div class="search-container">
-          <form class="" action="index.html" method="post">
-            <input type="text" name="buscar" placeholder="Buscar">
-            <button type="submit" name="enviar">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </form>
+          <?php get_search_form();?>
         </div>
 
         <div class="top-redes">
-          <a href="#">
+
+        <?php if (isset($facebook_link)): ?>
+          <a href="<?php echo esc_url($facebook_link); ?>">
             <i class="fa fa-facebook" aria-hidden="true"></i>
           </a>
+        <?php endif;  ?>
+
+        <?php if (isset($twitter_link)): ?>
+          <a href="<?php echo esc_url($twitter_link); ?>">  
           <a href="#">
             <i class="fa fa-twitter" aria-hidden="true"></i>
           </a>
+        <?php endif;  ?>  
+
+        <?php if (isset($instagram_link)): ?>
+          <a href="<?php echo esc_url($instagram_link); ?>">    
           <a href="#">
             <i class="fa fa-instagram" aria-hidden="true"></i>
           </a>
+          <?php endif;  ?>  
+
         </div>
 
       </div> <!-- /Top header -->
 
       <div class="menu-bar">
-        <a href="#" class="logo-container">
-          <img src="img/logotipo.png" alt="Frutería">
+        <a href="<?php echo home_url(); ?>" class="logo-container">
+          
+          <img src="<?php echo $logo ?>" alt="<?php bloginfo('name')?>">
 
+
+           <?php if ($show_page_title == true): ?> 
           <div class="titulo-web">
-            <h1>Sabor frutal</h1>
-            <h2>Bebidas con verdadera naturaleza</h2>
+            <h1><?php bloginfo('name'); ?></h1>
+            <h2><?php bloginfo('description'); ?></h2>
           </div>
+          <?php endif; ?>
         </a>
 
         <nav id="menuPrincipal" class="menu-principal">
           <div class="top-text">
-            <p>Preparando los mejores batidos</p>
+          <?php if (isset($top_header_text)): ?>
+          <p><?php echo $top_header_text; ?></p>
+          <?php endif;  ?>
             <i id="iconoCerrarMenu" class="fa fa-arrow-left" aria-hidden="true"></i>
           </div>
           <div class="top-redes">
-            <a href="#">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="#">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="#">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-          <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li class="page-active"><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
-          </ul>
+
+        <?php if (isset($facebook_link)): ?>
+          <a href="<?php echo esc_url($facebook_link); ?>">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+        <?php endif;  ?>
+
+        <?php if (isset($twitter_link)): ?>
+          <a href="<?php echo esc_url($twitter_link); ?>">  
+          <a href="#">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+        <?php endif;  ?>  
+
+        <?php if (isset($instagram_link)): ?>
+          <a href="<?php echo esc_url($instagram_link); ?>">    
+          <a href="#">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          <?php endif;  ?>  
+           
+        </div>
+          
+        <?php 
+          wp_nav_menu(array(
+            'theme_location' => 'main-menu'
+          ));
+        
+        ?>
+
         </nav>
 
         <div class="icono-menu-responsive">

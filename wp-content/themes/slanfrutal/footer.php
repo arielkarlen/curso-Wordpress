@@ -1,5 +1,27 @@
 </section> <!-- /Main -->
 
+<?php
+  $options = get_theme_mod('possumus_setings');
+      
+  if ( !empty($options['cta_text'])) {
+    $cta_text = $options['cta_text'];
+  } 
+
+  if ( !empty($options['cta_btn_text'])) {
+    $cta_btn_text = $options['cta_btn_text'];
+  }
+  
+  if ( !empty($options['cta_btn_link'])) {
+    $cta_btn_link = $options['cta_btn_link'];
+  } 
+
+  if ( !empty($options['bottom_footer_text'])) {
+    $bottom_footer_text = $options['bottom_footer_text'];
+  } 
+
+?>
+
+
 <!-- Footer -->
 <footer>
 
@@ -7,10 +29,16 @@
     <div class="contenedor">
 
       <div class="texto">
-        <p>¿Estás listo para aprender a crear los mejores batidos?</p>
+        
+          <?php if (isset($cta_text)): ?>
+            <p><?php echo $cta_text; ?></p>
+          <?php endif;  ?>  
       </div>
       <div class="boton">
-        <a href="#">Contáctanos</a>
+        <a href="/<?php echo esc_url($cta_btn_link); ?>">
+        <?php if (isset($cta_btn_text)): ?>
+          <?php echo $cta_btn_text; ?></a>
+          <?php endif;  ?>    
       </div>
 
     </div>
@@ -21,34 +49,33 @@
     <div class="contenedor">
 
       <div class="contenedor-widget">
-        <div class="widget">
-                      <h3 class="widget-title">Artículos más recientes</h3>
-                      <ul>
-                          <li><a href="#">Lorem ipsum dolor</a></li>
-                          <li><a href="#">Vestibulum auctor</a></li>
-                          <li><a href="#">Suspendisse efficitur orci</a></li>
-                          <li><a href="#">Nulla vehicula felis</a></li>
-                          <li><a href="#">Donec sagittis</a></li>
-                      </ul>
-                  </div>
+      <?php 
+      if (is_active_sidebar('footer-widget-izq') ) {
+ 
+    dynamic_sidebar('footer-widget-izq');
+
+}
+?>
       </div>
 
       <div class="contenedor-widget">
-        <div class="widget">
-                      <h3 class="widget-title">Categorías</h3>
-                      <ul>
-                          <li><a href="#">Suspendisse efficitur orci</a></li>
-                          <li><a href="#">Nulla vehicula felis</a></li>
-                          <li><a href="#">Donec sagittis</a></li>
-                      </ul>
-                  </div>
+      <?php 
+      if (is_active_sidebar('footer-widget-centro') ) {
+ 
+    dynamic_sidebar('footer-widget-centro');
+
+}
+?>
       </div>
 
       <div class="contenedor-widget">
-        <div class="widget">
-                      <h3 class="widget-title">Conócenos</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, atque.</p>
-                  </div>
+      <?php 
+      if (is_active_sidebar('footer-widget-der') ) {
+ 
+    dynamic_sidebar('footer-widget-der');
+
+}
+?>
       </div>
 
     </div>
@@ -56,7 +83,9 @@
 
   <section class="bottom-footer">
     <div class="contenedor">
-      <p>&copy; Todos los derechos reservados</p>
+    <?php if (isset($bottom_footer_text)): ?>
+            <p><?php echo $bottom_footer_text; ?></p>
+          <?php endif;  ?> 
     </div>
   </section> <!-- /.bottom-footer -->
 
